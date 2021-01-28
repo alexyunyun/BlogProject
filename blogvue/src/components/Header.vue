@@ -2,7 +2,7 @@
   <div id="header-container">
     <header>
       <div class="left-info">
-        <a class="home-link">
+        <a class="home-link" href="/">
           <img src="../assets/avatar.jpg" alt="旋木頵頵的个人空间" class="avatar">
           <h3>旋木頵頵的个人空间</h3>
         </a>
@@ -17,20 +17,22 @@
             @select="handleSelect"
             background-color="#181818"
             text-color="#fff"
-            active-text-color="#3eaf7c">
-          <el-menu-item index="/"><i class="el-icon-s-home"></i>主页</el-menu-item>
-          <el-menu-item index="/article"><i class="el-icon-paperclip"></i>文章</el-menu-item>
-          <el-submenu index="/project">
+            active-text-color="#3eaf7c"
+            router>
+          <el-menu-item index="/" :class="$route.path==='/'?'is-active':''"><i class="el-icon-s-home"></i>主页</el-menu-item>
+          <el-menu-item index="/classify" :class="$route.path==='/classify'?'is-active':'no'"><i class="el-icon-paperclip"></i>文章分类</el-menu-item>
+          <el-submenu index="/project" :class="$route.path==='/project'?'is-active':''">
             <template slot="title"><i class="el-icon-cpu"></i>实验室</template>
-            <el-menu-item v-for="(item,index) in projects" :index="index+''"><i class="el-icon-folder"></i>{{
+            <el-menu-item v-for="(item,index) in projects" :index="'project_details/'+item.id"><i
+                class="el-icon-folder"></i>{{
                 item.name
               }}
             </el-menu-item>
 
           </el-submenu>
 
-          <el-menu-item index="/about"><i class="el-icon-user-solid"></i>关于</el-menu-item>
-          <el-menu-item index="/other"><i class="el-icon-arrow-down"></i>其他</el-menu-item>
+          <el-menu-item index="/about" :class="$route.path==='/about'?'is-active':''"><i class="el-icon-user-solid"></i>关于</el-menu-item>
+          <el-menu-item index="/other" :class="$route.path==='/other'?'is-active':''"><i class="el-icon-arrow-down"></i>其他</el-menu-item>
         </el-menu>
       </div>
       <div class="right-box">
@@ -60,16 +62,19 @@ export default {
       activeIndex2: '/',
       projects: [
         {
+          'id': '0',
           'name': '图书管理系统',
           'description': 'SpringBoot+Vue前后端分离的图书管理系统',
           'link': 'github'
         },
         {
+          'id': '1',
           'name': '个人博客系统',
           'description': 'SpringBoot+Vue前后端分离的图书管理系统',
           'link': 'github'
         },
         {
+          'id': '2',
           'name': '寻Ta微信小程序',
           'description': 'SpringBoot+Vue前后端分离的图书管理系统',
           'link': 'github'
@@ -121,6 +126,7 @@ div {
   color: #d1d1d1;
   vertical-align: middle;
 }
+
 .home-link {
   text-decoration: none;
   display: flex;
@@ -128,6 +134,21 @@ div {
   align-items: center;
   margin-left: 20px;
 }
+
+.home-link:hover {
+  color: #d1d1d1;
+  cursor: pointer;
+}
+
+.home-link:visited {
+  color: #d1d1d1;
+}
+
+.home-link:hover {
+  color: #d1d1d1;
+  cursor: pointer;
+}
+
 .left-info .home-link .avatar {
   vertical-align: middle;
   margin-right: 3%;
