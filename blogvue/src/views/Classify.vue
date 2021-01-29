@@ -1,10 +1,15 @@
 <template>
-  <div>文章分类页</div>
+  <div>
+    <List></List>
+  </div>
 </template>
 
 <script>
+import List from "@/views/List";
 export default {
-  name: "Classify"
+  name: "Classify",
+  components: {List},
+
 }
 </script>
 

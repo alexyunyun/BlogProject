@@ -1,13 +1,19 @@
 <template>
   <div id="app">
-    <Header>公共头部</Header>
+    <Header class="header">公共头部</Header>
+    <Banner class="banner">BANNER</Banner>
+
     <el-container>
       <el-main>
-        <el-row :gutter="20">
-          <el-col span="5">
-            <User id="fixed-user">用户信息框</User>
+        <el-row :gutter="40">
+          <el-col :span="6" :offset="1" id="fixed-box">
+            <div>
+              <User id="fixed-user">用户信息框</User>
+              <User id="empty">隐藏框</User>
+            </div>
+
           </el-col>
-          <el-col span="15">
+          <el-col :span="16">
             <router-view></router-view>
           </el-col>
         </el-row>
@@ -15,18 +21,6 @@
 
     </el-container>
     <Footer>公共底部</Footer>
-
-    <!--    <el-container>-->
-    <!--      <el-header><Header>公共头部</Header></el-header>-->
-    <!--      <el-container>-->
-    <!--        <el-aside width="200px"><User>用户信息框</User></el-aside>-->
-    <!--        <el-container>-->
-    <!--          <el-main><router-view></router-view></el-main>-->
-
-    <!--        </el-container>-->
-    <!--        <el-footer><Footer>公共底部</Footer></el-footer>-->
-    <!--      </el-container>-->
-    <!--    </el-container>-->
   </div>
 </template>
 
@@ -35,15 +29,52 @@ import Header from "@/components/Header";
 import Home from "@/views/Home";
 import Footer from "@/components/Footer";
 import User from "@/components/User";
+import Banner from "@/components/Banner";
 
 export default {
   name: 'app',
   components: {
+    Banner,
     Footer,
     Home,
     Header,
     User
-  }
+  },
+  data() {
+    return {
+      boxWidth:null
+    }
+  },
+  methods: {
+    handleScroll() {
+      // js 代码
+      console.log("滑动时获取盒子"+document.querySelector("#fixed-user"))
+      let demo = document.querySelector('#fixed-user')
+      let empty = document.querySelector('#empty')
+      let clientHeight = document.documentElement.clientHeight
+      let scroll = Math.floor(document.documentElement.scrollTop) //滚动条距离顶部的距离
+      if(empty.clientWidth!==0){
+        this.boxWidth=empty.clientWidth
+        console.log("保存下来的宽度为"+this.boxWidth)
+      }
+      if (scroll > 0.6 * clientHeight) {//当滚动条距离顶部的距离大于了有色框距离body上边框的距离，就让页面固定。
+        console.log('现在滑动了'+scroll)
+        demo.style.position = 'fixed'
+        demo.style.width = this.boxWidth+'px'
+        demo.style.top = '150px'
+        empty.style.opacity='0'
+      } else {
+        demo.style.position = 'relative'
+        demo.style.width = '100%'
+        empty.style.width = '0'
+        demo.style.top='0'
+      }
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+
 }
 </script>
 
@@ -54,13 +85,17 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background: #efefef;
 }
 
 body {
   margin: 0;
 }
 
-#fixed-user {
-
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }
+
 </style>

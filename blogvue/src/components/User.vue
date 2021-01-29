@@ -5,7 +5,7 @@
         <el-card :body-style="{ padding: '14px' }">
           <img src="../assets/avatar.jpg" class="image" alt="用户头像">
           <div style="padding: 14px;">
-            <span>旋木頵頵</span>
+            <span class="user-title">旋木頵頵</span>
             <div class="bottom clearfix">
               <i class="iconfont icon-QQ"></i>
               <i class="iconfont icon-weixin"></i>
@@ -65,24 +65,23 @@ a:visited {
   border: none;
 }
 
-#user-container {
-}
-
 .user-box {
   width: 100%;
 }
-
+.user-title {
+  font-size: large;
+}
 .bottom {
   display: flex;
   justify-content: space-around;
   align-items: start;
-  margin-top: 13px;
+  margin-top: 20px;
   line-height: 12px;
   font-size: large;
 }
 
 .bottom i {
-  font-size: x-large;
+  font-size: xx-large;
   cursor: pointer;
   color: #8cc5ff;
 }
@@ -95,7 +94,7 @@ a:visited {
 }
 
 .footer i {
-  font-size: medium;
+  font-size: large;
   color: #ff6524;
 }
 
@@ -104,7 +103,7 @@ a:visited {
 }
 
 .image {
-  margin: auto;
+  margin: auto auto 10px;
   width: 50%;
   display: block;
   border: 1px solid #E4E7ED;

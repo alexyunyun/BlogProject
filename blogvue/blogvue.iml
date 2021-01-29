@@ -7,5 +7,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="font_2354030_7a95werxj5o" level="application" />
     <orderEntry type="library" name="font_2354030_ndafdqt0ptl" level="application" />
+    <orderEntry type="library" name="jquery-1.8.0" level="application" />
   </component>
 </module>
