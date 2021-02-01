@@ -1,9 +1,11 @@
 <template>
   <div class="list-container">
-    <div class="row-container">
-      <el-row class="title-row">
-        <el-col :span="24">SpringBoot项目实战，前后端分离博客</el-col>
-      </el-row>
+    <div class="row-container" >
+      <el-link href="/blog" class="link" :underline="false">
+        <el-row class="title-row">
+          <el-col :span="24">SpringBoot项目实战，前后端分离博客</el-col>
+        </el-row>
+      </el-link>
       <el-row class="description-row">
         <el-col :span="24">本项目技术栈包括springboot，vue，axios，element-ui，springbootJpa</el-col>
       </el-row>
@@ -13,10 +15,12 @@
         <div class="tag"><i class="el-icon-collection-tag" ></i> Java SpringBoot</div>
       </div>
     </div>
-    <div class="row-container">
-      <el-row class="title-row">
-        <el-col :span="24">SpringBoot项目实战，前后端分离博客</el-col>
-      </el-row>
+    <div class="row-container" >
+      <el-link href="/blog" class="link" :underline="false">
+        <el-row class="title-row">
+          <el-col :span="24">SpringBoot项目实战，前后端分离博客</el-col>
+        </el-row>
+      </el-link>
       <el-row class="description-row">
         <el-col :span="24">本项目技术栈包括springboot，vue，axios，element-ui，springbootJpa</el-col>
       </el-row>
@@ -26,10 +30,12 @@
         <div class="tag"><i class="el-icon-collection-tag" ></i> Java SpringBoot</div>
       </div>
     </div>
-    <div class="row-container">
-      <el-row class="title-row">
-        <el-col :span="24">SpringBoot项目实战，前后端分离博客</el-col>
-      </el-row>
+    <div class="row-container" >
+      <el-link href="/blog" class="link" :underline="false">
+        <el-row class="title-row">
+          <el-col :span="24">SpringBoot项目实战，前后端分离博客</el-col>
+        </el-row>
+      </el-link>
       <el-row class="description-row">
         <el-col :span="24">本项目技术栈包括springboot，vue，axios，element-ui，springbootJpa</el-col>
       </el-row>
@@ -39,10 +45,12 @@
         <div class="tag"><i class="el-icon-collection-tag" ></i> Java SpringBoot</div>
       </div>
     </div>
-    <div class="row-container">
-      <el-row class="title-row">
-        <el-col :span="24">SpringBoot项目实战，前后端分离博客</el-col>
-      </el-row>
+    <div class="row-container" >
+      <el-link href="/blog" class="link" :underline="false">
+        <el-row class="title-row">
+          <el-col :span="24">SpringBoot项目实战，前后端分离博客</el-col>
+        </el-row>
+      </el-link>
       <el-row class="description-row">
         <el-col :span="24">本项目技术栈包括springboot，vue，axios，element-ui，springbootJpa</el-col>
       </el-row>
@@ -52,10 +60,12 @@
         <div class="tag"><i class="el-icon-collection-tag" ></i> Java SpringBoot</div>
       </div>
     </div>
-    <div class="row-container">
-      <el-row class="title-row">
-        <el-col :span="24">SpringBoot项目实战，前后端分离博客</el-col>
-      </el-row>
+    <div class="row-container" >
+      <el-link href="/blog" class="link" :underline="false">
+        <el-row class="title-row">
+          <el-col :span="24">SpringBoot项目实战，前后端分离博客</el-col>
+        </el-row>
+      </el-link>
       <el-row class="description-row">
         <el-col :span="24">本项目技术栈包括springboot，vue，axios，element-ui，springbootJpa</el-col>
       </el-row>
@@ -65,10 +75,12 @@
         <div class="tag"><i class="el-icon-collection-tag" ></i> Java SpringBoot</div>
       </div>
     </div>
-    <div class="row-container">
-      <el-row class="title-row">
-        <el-col :span="24">SpringBoot项目实战，前后端分离博客</el-col>
-      </el-row>
+    <div class="row-container" >
+      <el-link href="/blog" class="link" :underline="false">
+        <el-row class="title-row">
+          <el-col :span="24">SpringBoot项目实战，前后端分离博客</el-col>
+        </el-row>
+      </el-link>
       <el-row class="description-row">
         <el-col :span="24">本项目技术栈包括springboot，vue，axios，element-ui，springbootJpa</el-col>
       </el-row>
@@ -78,19 +90,7 @@
         <div class="tag"><i class="el-icon-collection-tag" ></i> Java SpringBoot</div>
       </div>
     </div>
-    <div class="row-container">
-      <el-row class="title-row">
-        <el-col :span="24">SpringBoot项目实战，前后端分离博客</el-col>
-      </el-row>
-      <el-row class="description-row">
-        <el-col :span="24">本项目技术栈包括springboot，vue，axios，element-ui，springbootJpa</el-col>
-      </el-row>
-      <div class="info-row">
-        <div class="author"><i class="el-icon-user-solid"></i>旋木頵頵</div>
-        <div class="time"><i class="el-icon-time"></i> 2020-01-29</div>
-        <div class="tag"><i class="el-icon-collection-tag" ></i> Java SpringBoot</div>
-      </div>
-    </div>
+
   </div>
 </template>
 
@@ -122,11 +122,13 @@ export default {
   justify-content: space-around;
   align-items: start;
   background: white;
+  border: none;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-  margin-bottom: 45px;
+  margin-bottom: 35px;
   padding: 20px;
 }
+
 .title-row {
   font-size: x-large;
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
