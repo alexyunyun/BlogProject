@@ -8,20 +8,20 @@
         <el-row :gutter="40">
           <el-col :span="6" :offset="1" id="fixed-box">
             <div>
-              <div v-if="this.$route.path.match('/blog')">
+              <div v-if="this.$route.path==='/blog'">
                 <Catalog id="catalog" class="fixed-box">文章目录</Catalog>
                 <Catalog id="empty-catalog" style="opacity: 0.0001;"></Catalog>
               </div>
-              <div v-else>
+              <div v-else-if="this.$route.path==='/'||this.$route.path.match('/project') || this.$route.path.match('/other')||this.$route.path.match('/catagory')">
                 <User id="fixed-user">用户信息框</User>
                 <User id="empty"></User>
               </div>
-
-
+              <div v-else>
+                <div></div>
+              </div>
             </div>
-
           </el-col>
-          <el-col :span="16">
+          <el-col>
             <router-view></router-view>
           </el-col>
         </el-row>
@@ -60,12 +60,11 @@ export default {
     handleScroll() {
       // js 代码
       // console.log("滑动时获取盒子" + document.querySelector("#fixed-user"))
-      let demo = document.querySelector('#fixed-user')
-      let empty = document.querySelector('#empty')
-      let catalog = document.querySelector("#catalog")
-      console.log("获取catalog"+catalog)
-      let emptyCatalog = document.querySelector("#empty-catalog")
-      let clientHeight = document.documentElement.clientHeight
+      const demo = document.querySelector('#fixed-user')
+      const empty = document.querySelector('#empty')
+      const catalog = document.querySelector("#catalog")
+      const emptyCatalog = document.querySelector("#empty-catalog")
+      const clientHeight = document.documentElement.clientHeight
       let scroll = Math.floor(document.documentElement.scrollTop) //滚动条距离顶部的距离
 
       if (empty != null && empty.clientWidth !== 0) {
@@ -74,17 +73,17 @@ export default {
       }
       if (emptyCatalog != null && emptyCatalog.clientWidth !== 0) {
         this.catalogWidth = emptyCatalog.clientWidth
-        console.log("保存目录的宽度为"+this.catalogWidth)
+        console.log("保存目录的宽度为" + this.catalogWidth)
       }
 
-      if (demo != null && scroll > 0.55 * clientHeight) {//当滚动条距离顶部的距离大于了有色框距离body上边框的距离，就让页面固定。
+      if (demo != null && Math.round(scroll) >= Math.round(0.6 * clientHeight)) {//当滚动条距离顶部的距离大于了有色框距离body上边框的距离，就让页面固定。
         console.log('现在滑动了' + scroll)
         demo.style.position = 'fixed'
         demo.style.width = this.boxWidth + 'px'
         demo.style.top = '100px'
         empty.style.opacity = '0'
       } else {
-        if (demo!=null){
+        if (demo != null) {
           demo.style.position = 'relative'
           demo.style.width = '100%'
           empty.style.width = '0'
@@ -92,7 +91,7 @@ export default {
         }
       }
       console.log("对catalog定位")
-      if (catalog != null && scroll > 0.55 * clientHeight) {
+      if (catalog != null && Math.round(scroll) >= Math.round(0.6 * clientHeight)) {
         console.log("固定定位")
         catalog.style.position = 'fixed'
         catalog.style.width = this.catalogWidth + 'px'
