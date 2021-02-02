@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-
-      <Header class="header">公共头部</Header>
+    <Header class="header">公共头部</Header>
     <div v-if="this.$route.path.match('/admin')">
       <router-view></router-view>
     </div>
@@ -10,14 +9,15 @@
 
       <el-container>
         <el-main>
-          <el-row :gutter="40" >
+          <el-row :gutter="40">
             <el-col :span="6" :offset="1" id="fixed-box">
               <div>
                 <div v-if="this.$route.path==='/blog'">
                   <Catalog id="catalog" class="fixed-box">文章目录</Catalog>
                   <Catalog id="empty-catalog" style="opacity: 0.0001;"></Catalog>
                 </div>
-                <div v-else-if="this.$route.path==='/'||this.$route.path.match('/project') || this.$route.path.match('/other')||this.$route.path.match('/catagory')">
+                <div
+                    v-else-if="this.$route.path==='/'||this.$route.path.match('/project') || this.$route.path.match('/other')||this.$route.path.match('/catagory')">
                   <User id="fixed-user">用户信息框</User>
                   <User id="empty" style="opacity: 0.0001;"></User>
                 </div>
@@ -35,7 +35,7 @@
     </div>
 
     <Footer>公共底部</Footer>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -58,7 +58,7 @@ export default {
   },
   data() {
     return {
-      aside:true,
+      aside: true,
       boxWidth: null,
       catalogWidth: null
     }
@@ -83,7 +83,7 @@ export default {
         console.log("保存目录的宽度为" + this.catalogWidth)
       }
 
-      if (demo != null && scroll>= 0.55 * clientHeight) {
+      if (demo != null && scroll > 0.55 * clientHeight) {
         //当滚动条距离顶部的距离大于了有色框距离body上边框的距离，就让页面固定。
         console.log('现在滑动了' + scroll)
         demo.style.position = 'fixed'
@@ -99,13 +99,13 @@ export default {
         }
       }
       console.log("对catalog定位")
-      if (catalog != null && scroll>= 0.55 * clientHeight) {
+      if (catalog != null && scroll > 0.55 * clientHeight) {
         console.log("固定定位")
         catalog.style.position = 'fixed'
         catalog.style.width = this.catalogWidth + 'px'
         catalog.style.top = '100px'
       } else {
-        if (catalog!=null){
+        if (catalog != null) {
           catalog.style.position = 'relative'
           catalog.style.width = '100%'
           catalog.style.top = '0'
@@ -120,8 +120,8 @@ export default {
   created() {
     //加载时判断是否为博客编辑页
     //若为博客编辑页则去掉侧边栏
-    if (this.$route.path.match('/blog_edit')){
-      this.aside=false
+    if (this.$route.path.match('/blog_edit')) {
+      this.aside = false
     }
   }
 
