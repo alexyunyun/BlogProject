@@ -104,7 +104,18 @@ export default {
 </script>
 
 <style scoped>
-
+a{
+  color: #d1d1d1;
+  text-decoration: none;
+}
+a:hover{
+  color: #d1d1d1;
+  text-decoration: none;
+}
+a:visited {
+  color: #d1d1d1;
+  text-decoration: none;
+}
 body {
   margin: 0;
   padding: 0;
