@@ -11,21 +11,22 @@
           <el-tag v-for="item in tags" :type="item.type" class="tec-tag">{{ item.name }}</el-tag>
         </div>
         <div class="description">
-          <span class="small-title">项目描述</span>
+          <span class="small-title">项目描述:</span>
           这是一个前后端分离的博客系统，主要应用的技术有springboot，vue，element-ui等
         </div>
 
         <div class="images">
-          <span class="small-title">运行效果</span>
           <el-carousel :interval="4000" type="card" height="200px">
             <el-carousel-item v-for="item in images">
               <el-image :src="item"></el-image>
             </el-carousel-item>
           </el-carousel>
+          <span class="small-title">运行效果</span>
         </div>
 
         <div class="link">
-          <el-link type="primary">https://github.com/alexyunyun/BookManageSystem</el-link>
+          <span class="small-title">项目链接</span>
+          <el-link type="primary" class="link-inner" href="https://github.com/alexyunyun/BookManageSystem">https://github.com/alexyunyun/BookManageSystem</el-link>
         </div>
       </el-main>
     </el-container>
@@ -106,8 +107,12 @@ export default {
 
 .description {
   font-size: large;
+  margin: 20px;
 }
-
+.images {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
 .images img {
   height: 100%;
   object-fit: cover;
@@ -115,5 +120,20 @@ export default {
 .small-title {
   font-size: x-small;
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  color: #d1d1d1;
+  margin-right: 15px;
+}
+.link {
+  font-size: large;
+}
+.link .link-inner {
+  text-decoration: none;
+  font-size: medium;
+}
+.link-inner:hover {
+  text-decoration: none;
+}
+.link-inner:visited {
+  text-decoration: none;
 }
 </style>
