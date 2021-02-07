@@ -59,7 +59,7 @@
 
 <script>
 export default {
-  name: "BlogEdit",
+  name: "ProjectAdd",
   data() {
     return {
       select: '',

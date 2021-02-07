@@ -12,69 +12,93 @@ import About from "@/views/About";
 import Other from "@/views/Other";
 import AdminLogin from "@/views/AdminLogin";
 import Admin from "@/views/Admin";
+import FindBlog from "@/views/FindBlog";
+import FindProject from "@/views/FindProject";
 
 Vue.use(VueRouter)
 
 const routes = [
     {
         path: '/',
-        name: 'Home',
+        name: '首页',
         component: Home,
     },
     {
         path: '/classify',
-        name: 'Classify',
+        name: '分类',
         component: Classify
     },
     {
         path: '/blog',
-        name: 'Blog',
+        name: '博客',
         component: Blog
     },
     {
-        path: '/blog_edit',
-        name: 'BlogEdit',
-        component: BlogEdit
-    },
-    {
-        path: '/blog_add',
-        name: 'BlogAdd',
-        component: BlogAdd
-    },
-    {
-        path: '/project_details',
-        name: 'ProjectDetails',
+        path: '/project_details/:id',
+        name: '项目详情',
         component: ProjectDetails
     },
     {
-        path: '/project_edit',
-        name: 'ProjectEdit',
-        component: ProjectEdit
-    },
-    {
-        path: '/project_add',
-        name: 'ProjectAdd',
-        component: ProjectAdd
-    },
-    {
         path: '/about',
-        name: 'About',
+        name: '关于',
         component: About
     },
     {
         path: '/other',
-        name: 'Other',
+        name: '其他',
         component: Other
     },
     {
         path: '/admin_login',
-        name: 'AdminLogin',
+        name: '管理员登录',
         component: AdminLogin
     },
     {
-        path: '/Admin',
-        name: 'Admin',
-        component: Admin
+        path: '/admin',
+        name: '管理员',
+        component: Admin,
+        children: [
+            {
+                path: '/admin/find_blog',
+                name: '博客列表',
+                component: FindBlog,
+                show: true
+            },
+            {
+                path: '/admin/find_project',
+                name: '项目列表',
+                component: FindProject,
+                show: true
+            },
+            {
+                path: '/admin/blog_add',
+                name: '博客添加',
+                component: BlogAdd,
+                show: true
+
+            },
+            {
+                path: '/admin/blog_edit',
+                name: '博客编辑',
+                component: BlogEdit,
+                show:false
+            },
+            {
+                path: '/admin/project_add',
+                name: '项目添加',
+                component: ProjectAdd,
+                show: true
+            },
+            {
+                path: '/admin/project_edit',
+                name: '项目编辑',
+                component: ProjectEdit,
+                show:false
+            },
+
+
+        ]
+
     },
 
 ]

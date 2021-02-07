@@ -2,10 +2,9 @@
   <!--  编辑页属于管理员功能，普通用户不可见-->
   <div class="edit-container">
     <el-container>
-
-
     <el-header>
       <div style="margin-top: 15px;" class="article-title">
+        <el-input placeholder="id" v-model="id" readonly style="margin-bottom: 10px"></el-input>
         <el-input placeholder="文章标题" v-model="title" class="input-with-select">
           <el-select v-model="select" slot="prepend" placeholder="类型">
             <el-option label="原创" value="原创"></el-option>
@@ -63,6 +62,7 @@ export default {
   name: "BlogEdit",
   data() {
     return {
+      id:1,
       select: '',
       title: '',
       catagory:'',
@@ -94,6 +94,9 @@ export default {
   width: 80%;
 }
 
+.edit-box {
+  margin-top: 50px;
+}
 .content-box {
   width: 100%;
   border-radius: 5px;

@@ -17,7 +17,7 @@
                   <Catalog id="empty-catalog" style="opacity: 0.0001;"></Catalog>
                 </div>
                 <div
-                    v-else-if="this.$route.path==='/'||this.$route.path.match('/project') || this.$route.path.match('/other')||this.$route.path.match('/catagory')">
+                    v-else-if="this.$route.path==='/'||this.$route.path.match('/project_details') || this.$route.path.match('/other')||this.$route.path.match('/catagory')">
                   <User id="fixed-user">用户信息框</User>
                   <User id="empty" style="opacity: 0.0001;"></User>
                 </div>
