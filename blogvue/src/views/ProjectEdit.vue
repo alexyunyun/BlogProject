@@ -1,5 +1,5 @@
 <template>
-  <!--  项目添加页属于管理员功能，普通用户不可见-->
+  <!--  项目编辑页属于管理员功能，普通用户不可见-->
   <div class="edit-container">
     <el-container>
       <el-header>
