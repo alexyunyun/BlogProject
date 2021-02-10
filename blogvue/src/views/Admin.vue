@@ -4,6 +4,7 @@
       <el-aside class="aside" width="200px" >
         <el-menu
             :default-openeds=defaultOpen
+            default-active="/admin/find_blog"
             class="el-menu-vertical-demo"
             router
         >

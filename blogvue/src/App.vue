@@ -17,7 +17,7 @@
                   <Catalog id="empty-catalog" style="opacity: 0.0001;"></Catalog>
                 </div>
                 <div
-                    v-else-if="this.$route.path==='/'||this.$route.path.match('/project_details') || this.$route.path.match('/other')||this.$route.path.match('/catagory')">
+                    v-else-if="this.$route.path==='/'||this.$route.path.match('/project_details') || this.$route.path.match('/other')||this.$route.path.match('/classify')">
                   <User id="fixed-user">用户信息框</User>
                   <User id="empty" style="opacity: 0.0001;"></User>
                 </div>
@@ -71,7 +71,11 @@ export default {
       let empty = document.querySelector('#empty')
       let catalog = document.querySelector("#catalog")
       let emptyCatalog = document.querySelector("#empty-catalog")
+      let banner = document.querySelector('.banner')
+      let header = document.querySelector('.header')
       let clientHeight = document.documentElement.clientHeight
+      let bannerHeight = banner.offsetHeight
+      console.log(clientHeight)
       let scroll = Math.floor(document.documentElement.scrollTop) //滚动条距离顶部的距离
 
       if (empty != null && empty.clientWidth !== 0) {
@@ -83,12 +87,12 @@ export default {
         console.log("保存目录的宽度为" + this.catalogWidth)
       }
 
-      if (demo != null && scroll > 0.55 * clientHeight) {
+      if (demo != null && scroll > bannerHeight) {
         //当滚动条距离顶部的距离大于了有色框距离body上边框的距离，就让页面固定。
-        console.log('现在滑动了' + scroll)
+        console.log('现在滑动了' + scroll + 'clientheight' + clientHeight)
         demo.style.position = 'fixed'
         demo.style.width = this.boxWidth + 'px'
-        demo.style.top = '100px'
+        demo.style.top = header.offsetHeight+20+'px'
         empty.style.opacity = '0'
       } else {
         if (demo != null) {
@@ -99,11 +103,11 @@ export default {
         }
       }
       console.log("对catalog定位")
-      if (catalog != null && scroll > 0.55 * clientHeight) {
+      if (catalog != null && scroll > bannerHeight) {
         console.log("固定定位")
         catalog.style.position = 'fixed'
         catalog.style.width = this.catalogWidth + 'px'
-        catalog.style.top = '100px'
+        catalog.style.top = header.offsetHeight+20+'px'
       } else {
         if (catalog != null) {
           catalog.style.position = 'relative'
@@ -141,6 +145,8 @@ export default {
 
 body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .header {

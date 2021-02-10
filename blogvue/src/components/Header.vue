@@ -21,12 +21,8 @@
             router>
           <el-menu-item index="/" :class="$route.path==='/'?'is-active':''"><i class="el-icon-s-home"></i>主页
           </el-menu-item>
-          <el-submenu index="/classify" :class="$route.path==='/classify'?'is-active':''">
-            <template slot="title"><i class="el-icon-paperclip"></i>分类</template>
-            <el-menu-item v-for="item in catagory" :index="'/catagory_details/'+item"><i
-                class="el-icon-folder"></i>{{ item }}
-            </el-menu-item>
-          </el-submenu>
+          <el-menu-item index="/classify" :class="$route.path==='/'?'is-active':''"><i class="el-icon-paperclip"></i>分类
+          </el-menu-item>
           <!--          <el-menu-item index="/classify" :class="$route.path==='/classify'?'is-active':'no'"><i class="el-icon-paperclip"></i>文章分类</el-menu-item>-->
           <el-submenu index="/project" :class="$route.path==='/project'?'is-active':''">
             <template slot="title"><i class="el-icon-cpu"></i>实验室</template>
@@ -88,11 +84,7 @@ export default {
           'link': 'github'
         },
       ],
-      catagory: [
-        'Java',
-        'Vue',
-        '数据库'
-      ]
+
     }
   },
   methods: {
