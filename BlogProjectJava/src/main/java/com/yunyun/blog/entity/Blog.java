@@ -18,11 +18,12 @@ public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    private String author;
     private String title;
     private String description;
     private String content;
     private Date created;
     private Integer status;
     private Integer looks;
+    private String tags;
 }
