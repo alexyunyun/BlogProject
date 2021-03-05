@@ -18,6 +18,7 @@ public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private Integer user_id;
     private String author;
     private String title;
     private String description;
@@ -26,4 +27,5 @@ public class Blog {
     private Integer status;
     private Integer looks;
     private String tags;
+    private String classify;
 }

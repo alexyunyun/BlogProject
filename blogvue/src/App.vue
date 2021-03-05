@@ -13,13 +13,14 @@
             <el-col :span="6" :offset="1" id="fixed-box">
               <div>
                 <div v-if="this.$route.path==='/blog'">
-                  <Catalog id="catalog" class="fixed-box">文章目录</Catalog>
-                  <Catalog id="empty-catalog" style="opacity: 0.0001;"></Catalog>
+                  <Catalog id="catalog" class="fixed-box" style="opacity: 0.0001;">文章目录</Catalog>
+                  <Catalog id="empty-catalog" v-show="heightOver===true"></Catalog>
                 </div>
                 <div
                     v-else-if="this.$route.path==='/'||this.$route.path.match('/project_details') || this.$route.path.match('/other')||this.$route.path.match('/classify')">
-                  <User id="fixed-user">用户信息框</User>
-                  <User id="empty" style="opacity: 0.0001;"></User>
+                  <User id="fixed-user" class="fixed-box" style="opacity: 0.0001;">用户信息框</User>
+                  <User id="empty"></User>
+
                 </div>
                 <div v-else>
                 </div>
@@ -60,7 +61,8 @@ export default {
     return {
       aside: true,
       boxWidth: null,
-      catalogWidth: null
+      catalogWidth: null,
+      heightOver: false
     }
   },
   methods: {
@@ -74,10 +76,15 @@ export default {
       let banner = document.querySelector('.banner')
       let header = document.querySelector('.header')
       let clientHeight = document.documentElement.clientHeight
-      let bannerHeight = banner.offsetHeight
+      let bannerHeight = 0
+      if (banner!=null){
+        bannerHeight = banner.offsetHeight
+      }
+
       console.log(clientHeight)
       let scroll = Math.floor(document.documentElement.scrollTop) //滚动条距离顶部的距离
 
+      this.heightOver = scroll > 1.2 * bannerHeight;
       if (empty != null && empty.clientWidth !== 0) {
         this.boxWidth = empty.clientWidth
         console.log("保存下来的宽度为" + this.boxWidth)
@@ -89,32 +96,29 @@ export default {
 
       if (demo != null && scroll > bannerHeight) {
         //当滚动条距离顶部的距离大于了有色框距离body上边框的距离，就让页面固定。
-        console.log('现在滑动了' + scroll + 'clientheight' + clientHeight)
-        demo.style.position = 'fixed'
+        console.log('现在滑动了' + scroll + 'clientHeight' + clientHeight)
+        demo.style.opacity = "1"
+        empty.style.opacity = "0"
         demo.style.width = this.boxWidth + 'px'
-        demo.style.top = header.offsetHeight+20+'px'
-        empty.style.opacity = '0'
+
       } else {
         if (demo != null) {
-          demo.style.position = 'relative'
-          demo.style.width = '100%'
-          empty.style.width = '0'
-          demo.style.top = '0'
+          demo.style.opacity = "0"
+          empty.style.opacity = "1"
+
         }
       }
       console.log("对catalog定位")
       if (catalog != null && scroll > bannerHeight) {
         console.log("固定定位")
-        catalog.style.position = 'fixed'
+        catalog.style.opacity = "1"
         catalog.style.width = this.catalogWidth + 'px'
-        catalog.style.top = header.offsetHeight+20+'px'
+        emptyCatalog.style.opacity = "0"
       } else {
         if (catalog != null) {
-          catalog.style.position = 'relative'
-          catalog.style.width = '100%'
-          catalog.style.top = '0'
+          catalog.style.opacity = "0"
+          emptyCatalog.style.opacity = "1"
         }
-
       }
     }
   },
@@ -128,8 +132,6 @@ export default {
       this.aside = false
     }
   }
-
-
 }
 </script>
 
@@ -153,6 +155,11 @@ body {
   position: fixed;
   top: 0;
   z-index: 9999;
+}
+
+.fixed-box {
+  position: fixed;
+  top: 100px;
 }
 
 </style>

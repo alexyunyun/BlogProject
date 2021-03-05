@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,11 +33,35 @@ public class BlogHandler {
     @GetMapping("/findBlog/{page}/{size}")
     public Page<Blog> findAllByPage(@PathVariable("page") Integer page, @PathVariable("size") Integer size) {
         Pageable pageable = PageRequest.of(page - 1, size);
+        System.out.println("执行了查找博客方法");
         return blogRepository.findAll(pageable);
     }
 
     @GetMapping("/findById/{id}")
     public Blog findById(@PathVariable("id") Integer id) {
         return blogRepository.findById(id).get();
+    }
+    @PostMapping("/save")
+    public String save(@RequestBody Blog blog) {
+        Blog result = blogRepository.save(blog);
+        if (result != null) {
+            return "success";
+        }
+        return "fail";
+    }
+    @PostMapping("/update")
+    public String update(@RequestBody Blog blog) {
+        if (save(blog) != null){
+            return "success";
+        }
+        return "fail";
+    }
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Integer id) {
+         blogRepository.deleteById(id);
+        if (blogRepository.findById(id).isPresent()) {
+            return "fail";
+        }
+        return "success";
     }
 }
