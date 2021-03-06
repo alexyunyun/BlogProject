@@ -14,7 +14,7 @@
               <div>
                 <div v-if="this.$route.path==='/blog'">
                   <Catalog id="catalog" class="fixed-box" style="opacity: 0.0001;">文章目录</Catalog>
-                  <Catalog id="empty-catalog" v-show="heightOver===true"></Catalog>
+                  <Catalog id="empty-catalog" ></Catalog>
                 </div>
                 <div
                     v-else-if="this.$route.path==='/'||this.$route.path.match('/project_details') || this.$route.path.match('/other')||this.$route.path.match('/classify')">
@@ -159,7 +159,7 @@ body {
 
 .fixed-box {
   position: fixed;
-  top: 100px;
+  top: 80px;
 }
 
 </style>

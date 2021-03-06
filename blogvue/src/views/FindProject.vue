@@ -33,7 +33,7 @@
         </template>
       </el-table-column>
       <el-table-column
-          prop="date"
+          prop="time"
           label="更新日期"
           width="100">
       </el-table-column>
@@ -42,8 +42,8 @@
           label="操作"
           width="150">
         <template slot-scope="scope">
-          <el-button @click="handleClick(scope.row)" type="primary" size="small">编辑</el-button>
-          <el-button type="danger" size="small">删除</el-button>
+          <el-button @click="handleEdit(scope.row)" type="primary" size="small">编辑</el-button>
+          <el-button @click="handleDelete(scope.row)" type="danger" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -52,7 +52,7 @@
         class="pagination"
         background
         layout="prev, pager, next"
-        :total="1000">
+        :total="total">
     </el-pagination>
   </div>
 </template>
@@ -70,50 +70,44 @@ export default {
     handleLink(row, column, event, cell) {
       console.log(cell)
     },
-    handleClick(row) {
-      console.log(row.name);
-    }
+    handleEdit(row) {
+      console.log(row.id);
+      this.$router.push({
+        path: '/admin/project_edit',
+        query: {
+          id: row.id
+        }
+      })
+    },
+    handleDelete(row) {
+      const _this = this
+      console.log(row.id);
+      axios.get('http://localhost:8181/project/delete/' + row.id).then(function (res) {
+        console.log(res)
+        _this.$message({
+          showClose: true,
+          message: '博客删除成功',
+          type: 'success'
+        });
+        window.location.reload()
+      })
+    },
   },
 
   data() {
     return {
-      tableData: [{
-        id: 1,
-        date: '2016-05-02',
-        name: 'SpringBoot+Vue博客系统',
-        link: 'https://github.com/alexyunyun/BookManageSystem',
-        description: 'SpringBoot+Vue前后端分离型图书管理系统前端技术：vue+element-ui+axios后端技术: SpringBoot+SpringDataJpa数据库: MySql',
-      },
-        {
-          id: 2,
-          date: '2016-05-02',
-          name: 'SpringBoot+Vue博客系统',
-          link: 'https://github.com/alexyunyun/BookManageSystem',
-          description: 'SpringBoot+Vue前后端分离型图书管理系统前端技术：vue+element-ui+axios后端技术: SpringBoot+SpringDataJpa数据库: MySql',
-        },
-        {
-          id: 3,
-          date: '2016-05-02',
-          name: 'SpringBoot+Vue博客系统',
-          link: 'https://github.com/alexyunyun/BookManageSystem',
-          description: 'SpringBoot+Vue前后端分离型图书管理系统前端技术：vue+element-ui+axios后端技术: SpringBoot+SpringDataJpa数据库: MySql',
-        },
-        {
-          id: 4,
-          date: '2016-05-02',
-          name: 'SpringBoot+Vue博客系统',
-          link: 'https://github.com/alexyunyun/BookManageSystem',
-          description: 'SpringBoot+Vue前后端分离型图书管理系统前端技术：vue+element-ui+axios后端技术: SpringBoot+SpringDataJpa数据库: MySql',
-        },
-        {
-          id: 5,
-          date: '2016-05-02',
-          name: 'SpringBoot+Vue博客系统',
-          link: 'https://github.com/alexyunyun/BookManageSystem',
-          description: 'SpringBoot+Vue前后端分离型图书管理系统前端技术：vue+element-ui+axios后端技术: SpringBoot+SpringDataJpa数据库: MySql',
-        }
-      ]
+      tableData: [],
+      total:0
     }
+  },
+  created() {
+    const _this = this
+    axios.get('http://localhost:8181/project/findProject/1/8').then(function (res) {
+      console.log(res)
+      console.log(_this.total)
+      _this.total = res.data.totalElements
+      _this.tableData = res.data.content
+    })
   }
 }
 </script>
