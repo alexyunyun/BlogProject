@@ -81,22 +81,18 @@ export default {
         bannerHeight = banner.offsetHeight
       }
 
-      console.log(clientHeight)
       let scroll = Math.floor(document.documentElement.scrollTop) //滚动条距离顶部的距离
 
       this.heightOver = scroll > 1.2 * bannerHeight;
       if (empty != null && empty.clientWidth !== 0) {
         this.boxWidth = empty.clientWidth
-        console.log("保存下来的宽度为" + this.boxWidth)
       }
       if (emptyCatalog != null && emptyCatalog.clientWidth !== 0) {
         this.catalogWidth = emptyCatalog.clientWidth
-        console.log("保存目录的宽度为" + this.catalogWidth)
       }
 
       if (demo != null && scroll > bannerHeight) {
         //当滚动条距离顶部的距离大于了有色框距离body上边框的距离，就让页面固定。
-        console.log('现在滑动了' + scroll + 'clientHeight' + clientHeight)
         demo.style.opacity = "1"
         empty.style.opacity = "0"
         demo.style.width = this.boxWidth + 'px'
@@ -108,9 +104,7 @@ export default {
 
         }
       }
-      console.log("对catalog定位")
       if (catalog != null && scroll > bannerHeight) {
-        console.log("固定定位")
         catalog.style.opacity = "1"
         catalog.style.width = this.catalogWidth + 'px'
         emptyCatalog.style.opacity = "0"

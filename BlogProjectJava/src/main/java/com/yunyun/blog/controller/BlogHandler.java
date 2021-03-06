@@ -41,6 +41,7 @@ public class BlogHandler {
     public Blog findById(@PathVariable("id") Integer id) {
         return blogRepository.findById(id).get();
     }
+
     @PostMapping("/save")
     public String save(@RequestBody Blog blog) {
         Blog result = blogRepository.save(blog);
@@ -49,6 +50,7 @@ public class BlogHandler {
         }
         return "fail";
     }
+
     @PostMapping("/update")
     public String update(@RequestBody Blog blog) {
         if (save(blog) != null){

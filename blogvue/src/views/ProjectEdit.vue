@@ -97,6 +97,7 @@ export default {
         message: '您正在返回项目列表',
         type: 'warning'
       });
+      this.$router.push('/admin/find_project')
     },
     submitForm(formName) {
       const _this = this

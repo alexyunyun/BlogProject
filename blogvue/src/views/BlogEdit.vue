@@ -16,6 +16,7 @@
         </el-header>
         <el-main>
           <div class="edit-box">
+            <el-input type="textarea" v-model="ruleForm.description" class="desc-box" placeholder="在这里填写博客简介"></el-input>
             <mavon-editor class="content-box"
                           :scroll-style=prop.scrollStyle
                           :value="ruleForm.content"
@@ -71,6 +72,7 @@ export default {
         title: '',
         select: '',
         author: '',
+        description:'',
         content: "",
         classify: '',
         tag: ''
@@ -109,6 +111,7 @@ export default {
         message: '您正在返回博客列表',
         type: 'warning'
       });
+      this.$router.push('/admin/find_blog')
     },
     submitForm(formName) {
       const _this = this
@@ -147,7 +150,10 @@ export default {
 .edit-box {
   margin-top: 50px;
 }
-
+.desc-box {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 .content-box {
   width: 100%;
   border-radius: 5px;
